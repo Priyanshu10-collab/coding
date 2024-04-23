@@ -1,11 +1,14 @@
 #include<stdio.h>
+#include<conio.h>
+
 int main(){
     int a,b;
-    int c = a+b;
-    printf("enter the value of a: %d\n");
+    printf("Enter the value of A - ");
     scanf("%d",&a);
-    printf("enter the value of b: %d\n");
+    printf("Enter the value of B - ");
     scanf("%d",&b);
-    printf("the value of addition of a and b is %d",&c);
+    printf("The Addition of A and B is - %d",a+b);
+
     return 0;
+
 }

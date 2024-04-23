@@ -55,7 +55,7 @@ int countOccurrences(vector<int> &arr, int key) {
     int last = lastOccurrences(arr, 0, arr.size() - 1, key);
 
     if (first != -1 && last != -1)
-        return last - first + 1;
+        return (last - first) + 1;
     else
         return 0;
 }
@@ -69,11 +69,11 @@ int main() {
     int totalOccurrences = countOccurrences(arr, key);
 
     if (firstOccurrence != -1) {
-        cout << "The first occurrence of " << key << " is at index " << firstOccurrence << std::endl;
-        cout << "The last occurrence of " << key << " is at index " << lastOccurrence << std::endl;
-        cout << "The total number of occurrences of " << key << " is " << totalOccurrences << std::endl;
+        cout << "The first occurrence of " << key << " is at index " << firstOccurrence <<endl;
+        cout << "The last occurrence of " << key << " is at index " << lastOccurrence <<endl;
+        cout << "The total number of occurrences of " << key << " is " << totalOccurrences <<endl;
     } else {
-        cout << key << " is not present in the array" << std::endl;
+        cout << key << " is not present in the array" <<endl;
     }
 
     return 0;
