@@ -1,21 +1,22 @@
-#include<vector>
-#include<vector>
+#include <vector>
+#include <vector>
 using namespace std;
-void selectionSort(vector<int>& arr, int n)
-{   
-    for(int i = 0; i < n-1; i++ ) {
+void selectionSort(vector<int> &arr, int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
         int minIndex = i;
-        
-        for(int j = i+1; j<n; j++) {
-            
-            if(arr[j] < arr[minIndex]) 
+
+        for (int j = i + 1; j < n; j++)
+        {
+
+            if (arr[j] < arr[minIndex])
                 minIndex = j;
-            
         }
         swap(arr[minIndex], arr[i]);
     }
 }
 int main()
 {
- return 0;
+    return 0;
 }
