@@ -45,5 +45,6 @@
         "typeinfo": "cpp",
         "string.h": "c"
     },
-    "liveServer.settings.AdvanceCustomBrowserCmdLine": ""
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+    "codeium.enableCodeLens": "hide_x"
 }

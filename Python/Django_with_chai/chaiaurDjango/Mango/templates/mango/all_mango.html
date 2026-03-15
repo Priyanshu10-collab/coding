@@ -1,0 +1,20 @@
+{% extends "website/layout.html" %}
+
+{% block title %}
+Mango Home page
+{% endblock %}
+
+{% block content %}
+<h1>Hello Jee | Kaise hai Mango?</h1>
+
+{% for mango in mango %}
+    <div class='mango-item'>
+        <img src="{{mango.image.url}}" alt="">
+        <h3>{{mango.name}}</h3>
+        test
+    </div>
+
+{% endfor %}
+
+{% endblock %}
+

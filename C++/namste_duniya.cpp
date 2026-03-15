@@ -1112,45 +1112,496 @@ bool anagram(string s, string t) {
 // }
 
 
-int maxDepth(string s){
-    int currDepth = 0, maxDepth = 0;
+// int maxDepth(string s){
+//     int currDepth = 0, maxDepth = 0;
 
-    for(auto ch : s){
-        if(ch == '('){
-            currDepth++;
-            maxDepth = max(currDepth,maxDepth);
-        }
-        else if(ch == ')'){
-            currDepth--;
+//     for(auto ch : s){
+//         if(ch == '('){
+//             currDepth++;
+//             maxDepth = max(currDepth,maxDepth);
+//         }
+//         else if(ch == ')'){
+//             currDepth--;
+//         }
+//     }
+//     return maxDepth;
+// }
+// int romanToInteger(string s){
+//     unordered_map<char,int> roman = {
+//         {'I',1},
+//         {'V',5},
+//         {'X',10},
+//         {'L',50},
+//         {'C',100},
+//         {'D',500},
+//         {'M',1000}
+//     };
+
+//     int result = 0;
+//     int n = s.length();
+
+//     for(int i = 0 ;  i < n ; i++){
+//         if(roman[s[i]] < roman[s[i+1]]){
+//             result -= roman[s[i]];
+//         }
+//         else{
+//             result += roman[s[i]];
+//         }
+//     }
+//     return result;
+// }
+
+// int myAtoi(string s){
+//     int i = 0; int sign = 1;
+//     long long res = 0;
+
+//     while(i < s.size() && s[i] ==' '){i++;}
+//     if(i == s.size()) return 0;
+
+//     if(s[i] == '-'){sign = -1; i++;}
+//     else if(s[i] == '+'){
+//         i++;
+//     }
+
+//     while(i < s.size() && isdigit(s[i])){
+//         res = res * 10 + (s[i] - '0');
+
+//         if(res * sign > INT_MAX){
+//             return INT_MAX;
+//         }
+//         if(res * sign < INT_MIN){
+//             return INT_MIN;
+//         }
+
+//         i++;
+//     }
+
+//     return sign * res;
+// }
+
+int beautySum(string s){
+    int totalBeauty = 0;
+
+    for(int i = 0 ; i < s.size() ; i++){
+        unordered_map<char,int> freq;
+
+        for(int j = i ; j < s.size() ; j++){
+            freq[s[j]]++;
+
+            int maxFreq = 0; int minFreq = INT_MAX;
+
+            for(auto &p : freq){
+                maxFreq = max(maxFreq,p.second);
+                minFreq = min(minFreq,p.second);
+            }
+
+            totalBeauty += maxFreq - minFreq;
         }
     }
-    return maxDepth;
+    return totalBeauty;
 }
-int romanToInteger(string s){
-    unordered_map<char,int> roman = {
-        {'I',1},
-        {'V',5},
-        {'X',10},
-        {'L',50},
-        {'C',100},
-        {'D',500},
-        {'M',1000}
-    };
 
-    int result = 0;
-    int n = s.length();
+string makeSmallestPalindrome(string s){
+    int n = s.size();
 
     for(int i = 0 ;  i < n ; i++){
-        if(roman[s[i]] < roman[s[i+1]]){
-            result -= roman[s[i]];
-        }
-        else{
-            result += roman[s[i]];
-        }
+        char smaller = min(s[i],s[n-i-1]);
+        s[i] = s[n-i-1] = smaller;
     }
-    return result;
+    return s;
 }
 
+// class Node{
+//     public:
+//     int data;
+//     Node* next;
+
+//     Node(int data1){
+//         this ->data = data1;
+//         this ->next = nullptr;
+//     }
+
+//     Node(int data1, Node* next1){
+//         this -> data = data1;
+//         this -> next = next1;
+//     }
+// };
+
+// Node* convertArrayToLinkedList(vector<int> arr){
+//     Node* head = new Node(arr[0]);
+//     Node* tail = head;
+
+//     for(int i = 1 ; i < arr.size(); i++){
+//         Node* temp = new Node(arr[i]);
+//         tail ->next = temp;
+//         tail = temp;
+//     }
+//     return head;
+// }
+
+// Node* DeleteKthNode(Node* head, int k){
+//     if(head == NULL){
+//         return head;
+//     }
+
+//     if(k == 1){
+//         Node* temp =  head;
+//         head = head -> next;
+//         free(temp);
+//         return head;
+//     }
+
+//     int cnt = 0;
+//     Node* curr = head;
+//     Node* prev = NULL;
+
+//     while(curr != NULL){
+//         cnt++;
+//         if(cnt == k){
+//             prev -> next = prev->next->next;
+//             free(curr);
+//             break;
+//         }
+//         prev = curr;
+//         curr = curr -> next;
+//     }
+//     return head;
+// }
+
+// Node* DeleteKthNode(Node* head, int el){
+//     if(head == NULL){
+//         return head;
+//     }
+
+//     if(head -> data  == el){
+//         Node* temp =  head;
+//         head = head -> next;
+//         free(temp);
+//         return head;
+//     }
+
+//     int cnt = 0;
+//     Node* curr = head;
+//     Node* prev = NULL;
+
+//     while(curr != NULL){
+//         if(curr -> data == el){
+//             prev -> next = prev->next->next;
+//             free(curr);
+//             break;
+//         }
+//         prev = curr;
+//         curr = curr -> next;
+//     }
+//     return head;
+// }
+
+// //Insert Node at Kth Position
+
+// Node* insertPostion(Node* head, int el , int k){
+//     if(head == nullptr){
+//         if(k=1){
+//             return new Node(el);
+//         }
+//         else{
+//             return head;
+//         }
+//     }
+
+//     if(k == 1){
+//         return new Node(el,head);
+//     }
+
+//     int cnt = 0;
+//     Node* temp = head;
+
+//     while(temp != nullptr){
+//         cnt++;
+//         if(cnt == k-1){
+//             Node* x = new Node(el, temp->next);
+//             temp -> next = x;
+//             break;
+//         }
+//         temp = temp -> next;
+//     }
+// }
+
+// Node* insertBeforeValue(Node* head, int el, int val){
+//     if(head == NULL){
+//         return NULL;
+//     }
+//     if(head -> data = val){
+//         return new Node(el,head);
+//     }
+
+//     Node* temp = head;
+//     while(temp -> next != NULL){
+//         if(temp -> next -> data = val){
+//             Node* x = new Node(el, temp -> next);
+//             temp -> next = x;
+//             break;
+//         }
+//         temp = temp -> next ;
+//     }
+//     return head;
+// }
+
+//Doubly Linked List
+
+class Node{
+    public:
+    int data;
+    Node* prev;
+    Node* front;
+
+    Node(int data){
+        this -> data = data;
+        this -> prev = nullptr;
+        this -> front = nullptr;
+    }
+
+    Node(int data , Node* front1, Node* prev1){
+        this -> data = data;
+        this -> prev = prev1;
+        this -> front = front1;
+    }
+};
+
+// Node* convertArr2DLL(vector<int> &arr){
+//     Node* head = new Node(arr[0]);
+//     Node* prev = head;
+
+//     for(int i = 1; i < arr.size() ; i++){
+//         Node* temp = new Node(arr[i]);
+//         prev -> front = temp;
+//         prev = temp;
+//     }
+//     return head;
+// }
+
+// Node* DeleteHead(Node* head){
+//     Node* temp = head;
+//     head = head -> front;
+
+//     head -> prev  = nullptr;
+//     temp -> front = nullptr;
+// }
+
+// Node* DeleteTail(Node* head){
+//     if(head == NULL || head ->front == NULL){
+//         return nullptr;
+//     }
+
+//     Node* Tail = head;
+//     while(Tail -> front != NULL){
+//         Tail = Tail -> front;
+//     }
+//     Node* newTail = Tail -> prev;
+//     newTail ->front = nullptr;
+//     Tail -> prev = nullptr;
+
+//     delete Tail;
+//     return head;
+
+// }
+
+// Node* DeleteKthPosition(Node* head, int k){
+//     if(head == NULL) return nullptr;
+
+//     Node* temp = head;
+//     int cnt = 1;
+
+//     while(temp != NULL && cnt < k){
+//         temp = temp->front;
+//         cnt++;
+//     }
+
+//     if(temp == NULL) return head;
+
+//     Node* prev = temp->prev;
+//     Node* next = temp->front;
+
+//     if(prev == NULL && next == NULL){
+//         delete temp;
+//         return nullptr;
+//     }
+//     else if(prev == NULL){
+//         head = next;
+//         next->prev = nullptr;
+//         temp->front = nullptr;
+//         delete temp;
+//         return head;
+//     }
+//     else if(next == NULL){
+//         prev->front = nullptr;
+//         temp->prev = nullptr;
+//         delete temp;
+//         return head;
+//     }
+//     else{
+//         prev->front = next;
+//         next->prev = prev;
+//         temp->prev = nullptr;
+//         temp->front = nullptr;
+//         delete temp;
+//         return head;
+//     }
+// }
+
+Node* ReverseLinkedList(Node* head){
+    Node* temp = head;
+    stack<int>st;
+    while(temp != NULL){
+        st.push(temp->data);
+        temp = temp -> front;
+    }
+    temp = head;
+    while(temp != NULL){
+        temp -> data = st.top();
+        st.pop();
+        temp = temp -> front;
+    }
+    return head;
+}
+
+Node* ReversalLinkedList(Node* head){
+    Node* temp = head;
+    Node* prev = NULL;
+    Node* next = NULL;
+
+    while(temp != NULL){
+        temp -> front = next;
+        temp -> front = prev;
+        prev = temp;
+        temp = next;
+    }
+    return prev;
+}
+
+Node* Reverse(Node* head){
+    if(head == NULL || head ->front == NULL){
+        return head;
+    }
+
+    Node* newHead = Reverse(head->front);
+    Node* Curr = head -> front;
+    Curr -> front = head;
+    head -> front = NULL;
+    return newHead;
+}
+
+Node* Reverse(Node* head, int left, int right) {
+    if (!head || left == right) {
+        return head;
+    }
+
+    Node* temp = head;
+    Node* back = NULL;
+    int cnt = 1;
+
+    while (cnt < left && temp != NULL) {
+        back = temp;
+        temp = temp->front;
+        cnt++;
+    }
+
+    if (temp == NULL) {
+        return head;
+    }
+
+    Node* leftprev = back;
+    Node* sublistTail = temp;
+
+    Node* curr = temp;
+    Node* prev = NULL;
+    Node* next = NULL;
+
+    while (cnt <= right && curr != NULL) {
+        next = curr->front;
+        curr->front = prev;
+        prev = curr;
+        curr = next;
+        cnt++;
+    }
+
+    if (leftprev != NULL) {
+        leftprev->front = prev;
+    } else {
+        head = prev;
+    }
+
+    sublistTail->front = curr;
+    return head;
+}
+
+Node* detectCycle(Node* head){
+    if(head == NULL || head -> front == NULL){
+        return NULL;
+    }
+
+    Node* slow = head ;
+    Node* fast = head;
+
+    while(fast != NULL && fast -> front != NULL){
+        slow = slow -> front; 
+        fast = fast -> front -> front;
+
+        if(slow == fast ){
+            Node* entry = head;
+            while(entry != slow){
+                entry = entry -> front;
+                slow = slow -> front;
+            }
+            return entry;
+        }
+    }
+}
+
+int findlenghtofLL(Node* head){
+    Node* slow = head;
+    Node* fast = head;
+
+    if(head != NULL && head -> front != nullptr){
+        return 0;
+    }
+
+    while(fast != NULL && fast -> front != nullptr){
+        slow  = slow -> front;
+        fast = fast -> front -> front;
+
+        if(slow == fast){
+            int cnt = 1;
+            Node* temp = slow -> front;
+            while(temp !=  slow){
+                temp = temp -> front;
+                cnt++;
+            }
+            return cnt;
+        }
+    }
+    return 0;
+}
+
+Node* OddEvenList(Node* head){
+    if(head == NULL || head -> front == NULL){
+        return head;
+    }
+
+    Node* odd = head;
+    Node* even = head -> front;
+    Node* evenHead = even;
+
+    while(even != NULL && even -> front != NULL){
+        odd -> front = even -> front;
+        odd = odd -> front;
+
+        even -> front = odd -> front;
+        even = even -> front;
+    }
+
+    odd -> front = evenHead;
+    return head;
+}
 int main()
 {
     // vector<int> nums = {4,5,6,7,0,1,2};
@@ -1187,8 +1638,28 @@ int main()
     // string s = "(a(b(c)d)";
     // cout<<maxDepth(s);
 
-    string s = "XXI";
-    cout<<romanToInteger(s);
-}
+    // string s = "XXI";
+    // cout<<romanToInteger(s);
+
+   //  string s = "  42(a)   ";
+   //  cout<<myAtoi(s);
+
+//    string s = "aabcb";
+//    cout<<beautySum(s);
+
+//    string s = "seven";
+//    cout<<makeSmallestPalindrome(s);
+
+    // int a[] = {1,2,3,4,5};
+    // vector<int> v(a,a+5);
+    // Node* head = convertArrayToLinkedList(v);
+
+
+    
+
+
+
+
+ }
 
 
