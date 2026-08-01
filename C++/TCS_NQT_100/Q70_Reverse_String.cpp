@@ -1,21 +1,29 @@
-    #include<bits/stdc++.h>
-    using namespace std;
+#include <bits/stdc++.h>
+using namespace std;
 
-    string reverseString(string s){
-        string res = "";
-        string word = "";
-        for(int i = s.length() - 1; i >= 0 ; i--){
-            if(s[i] == ' '){
-                res += word + " ";
-                word = "";
-            }
-            word += s[i];
+string reverseString(string s)
+{
+    string res = "";
+    string word = "";
+    for (int i = s.length() - 1; i >= 0; i--)
+    {
+        if (s[i] == ' ')
+        {
+            res += word + " ";
+            word = "";
         }
-        return res+word; 
+        word += s[i];
     }
+    if (word != "")
+    {
+        res += word;
+    }
+    return res;
+}
 
-    int main(){
-        string s;
-        getline(cin,s);
-        cout<<reverseString(s);
-    }
+int main()
+{
+    string s;
+    getline(cin, s);
+    cout << reverseString(s);
+}

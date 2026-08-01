@@ -3,7 +3,7 @@ using namespace std;
 
 void reverseString(string &s){
     string word = "";
-    string res = ""; 
+    string res = "";
     reverse(s.begin(),s.end());
     for(int i = 0 ; i < s.size(); i++){
         if(s[i] != ' '){

@@ -30,5 +30,5 @@ int main(){
 
     average = sum/count;
 
-    cout<<sum<<" "<<count<<" "<<average;
+    cout<<sum<<" "<<count<<" "<<fixed<<setprecision(2)<<average;
 }

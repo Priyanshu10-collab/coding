@@ -15,12 +15,21 @@ string numberToWord(int n){
         return mp[n];
     }
     else if(n < 100){
+        if(n%10 == 0){
+            return mp[n/10] + "ty";
+        }
         return mp[(n/10)*10] + " " + mp[n%10];
     }
     else if(n<1000){
+        if(n%100 == 0){
+            return mp[n/100] + " Hundred";
+        }
         return mp[n/100] + " Hundred" + " "+ numberToWord(n%100);
     }
     else if(n < 1000000){
+        if(n%1000 == 0){
+            return numberToWord(n/1000) + " Thousand";
+        }
         return numberToWord(n/1000) + "Thousand" + " " + numberToWord(n%1000);
     }
 }

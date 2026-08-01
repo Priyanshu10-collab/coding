@@ -12,7 +12,7 @@ public:
     cout<<"Name: "<<this->name<<" ,";
     cout<<"health: "<<this->health<<" ,";
     cout<<"level:  "<<this->level <<" }";
-    cout<<endl<<endl; 
+    cout<<endl<<endl;
     //name = new char(100);
    }
 //Parameterised constructor
@@ -24,7 +24,7 @@ Hero(int Health,char Level){
 //copy constructor
 Hero(Hero &temp){
     cout<<"Copy constructure caled"<<endl;
-    this->health = temp.health; 
+    this->health = temp.health;
     this->level = temp.level;
 }
 void print(){
@@ -66,7 +66,7 @@ int main()
    /* Hero Ramesh;
     cout<<"Adress of ramesh "<<&Ramesh<<endl;
     Ramesh.getHealth();
-    
+
     //dynamicaly
     Hero *h = new Hero;
     h->print();
@@ -83,7 +83,7 @@ int main()
      cout<<" Level is "<<a.level<<endl;
      cout<<" health is "<<a.getHealth()<<endl;
 
-     
+
      //dynamic allocation
      Hero *h = new Hero;
      h->setHealth(70);
@@ -95,16 +95,15 @@ int main()
      cout<<" health is "<<h->getHealth()<<endl;
 ***/
 
-    //creation of object
-    //Hero Ramesh;
-    //cout<<"Ramesh health is "<< Ramesh.getHealth()<<endl;
-    //use setHealth
-    //Ramesh.setHealth(80);
-    //Ramesh.health = 70;
-    //Ramesh.level = 'A';
+// creation of object
+// Hero Ramesh;
+// cout<<"Ramesh health is "<< Ramesh.getHealth()<<endl;
+// use setHealth
+// Ramesh.setHealth(80);
+// Ramesh.health = 70;
+// Ramesh.level = 'A';
 
-    //cout<<"Health  is:-  "<<Ramesh.getHealth()<<endl;
-    //cout<<"Level is :-   "<<Ramesh.level<<endl;
+// cout<<"Health  is:-  "<<Ramesh.getHealth()<<endl;
+// cout<<"Level is :-   "<<Ramesh.level<<endl;
 
-
-    //
+//

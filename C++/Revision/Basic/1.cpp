@@ -1,15 +1,22 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
-int main() {
-    int number;
-    cin >> number;
-    int i = 1;
-    int sum = 0;
-    while(i <= number) {
-        sum += i;  // Add i to sum
-        i++;  // Increment i
+int main(){
+    int n = 5;
+    vector<int>a(6);
+    a = {1,2,2,1,1,3};
+    unordered_map<int,int>ab;
+    for(int i = 0; i < 6; i++){
+        ab[a[i]]++;
     }
-    cout << sum;
-    return 0;
+
+    for(auto i: ab){
+        if(i.second == 1){
+            cout<<i.first;
+        }
+        else{
+            continue;
+        }
+    }
 }
+

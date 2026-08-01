@@ -5,11 +5,13 @@ int binaryToDecimal(int n){
     string a = to_string(n);
     int sum = 0;
     reverse(a.begin(),a.end());
+
     for(int i=0;i<a.length();i++){
         if(a[i] == '1'){
             sum += pow(2,i);
         }
     }
+
     return sum;
 }
 
